@@ -1,66 +1,66 @@
-# Proyecto Final: IBM AI Enterprise Workflow Specialization
+# Final Project: IBM AI Enterprise Workflow Specialization
 
-## Autor
-Este proyecto fue creado por Esteban M. Cruz Seoane.
+## Author
+This project was created by Esteban M. Cruz Seoane.
 
-## ¿Qué es este proyecto?
-Es una API sencilla que hace predicciones usando un modelo. También guarda logs y tiene pruebas para verificar que todo funciona.
+## What is this project?
+This is a simple API that makes predictions using a model. It also logs predictions and includes tests to verify everything works.
 
-## Archivos importantes
-- **app.py**: Aquí está la API.
-- **model.py**: El modelo que hace las predicciones.
-- **logger.py**: Guarda los logs.
-- **data_ingestion.py**: Maneja los datos.
-- **run_tests.py**: Pruebas para verificar que todo funciona.
-- **requirements.txt**: Lista de cosas que necesitas instalar.
-- **Dockerfile**: Para usar Docker (opcional).
+## Important Files
+- **app.py**: The API implementation.
+- **model.py**: The model that makes predictions.
+- **logger.py**: Handles logging.
+- **data_ingestion.py**: Manages data.
+- **run_tests.py**: Tests to verify functionality.
+- **requirements.txt**: List of dependencies to install.
+- **Dockerfile**: For using Docker (optional).
 
-## Carpetas
-- **sample_data/**: Datos de ejemplo.
-- **models/**: Modelos guardados.
-- **logs/**: Archivos de logs.
-- **tests/**: Pruebas.
+## Folders
+- **sample_data/**: Example data.
+- **models/**: Saved models.
+- **logs/**: Log files.
+- **tests/**: Tests.
 
-## ¿Qué necesitas para empezar?
-1. **Python**: Asegúrate de tener Python 3.8 o más nuevo.
-2. **pip**: Para instalar las cosas necesarias.
-3. **Docker** (opcional): Si quieres usar contenedores.
+## What do you need to get started?
+1. **Python**: Make sure you have Python 3.8 or newer.
+2. **pip**: To install the required dependencies.
+3. **Docker** (optional): If you want to use containers.
 
-## Pasos para usarlo
-1. **Descarga el proyecto**:
+## Steps to use it
+1. **Download the project**:
    ```bash
    git clone https://github.com/pinkbunnies/curso-ibm.git
    ```
-2. **Ve a la carpeta**:
+2. **Navigate to the folder**:
    ```bash
    cd curso-ibm/capstone-solution
    ```
-3. **Instala las dependencias**:
+3. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
-4. **Ejecuta la API**:
+4. **Run the API**:
    ```bash
    python app.py
    ```
-5. **Prueba la API**:
-   Abre tu navegador o usa Postman para ir a:
+5. **Test the API**:
+   Open your browser or use Postman to go to:
    ```
    http://127.0.0.1:5000
    ```
 
-## ¿Cómo probar que funciona?
-Ejecuta las pruebas:
+## How to test it?
+Run the tests:
 ```bash
 python run_tests.py
 ```
 
-## ¿Y si quiero usar Docker?
-1. **Crea la imagen**:
+## What if I want to use Docker?
+1. **Build the image**:
    ```bash
    docker build -t capstone-solution .
    ```
-2. **Ejecuta el contenedor**:
+2. **Run the container**:
    ```bash
    docker run -p 5000:5000 capstone-solution
    ```
