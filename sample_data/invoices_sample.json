@@ -1,0 +1,7 @@
+[
+  {"country": "Spain", "month": "2019-01", "revenue": 12500},
+  {"country": "Spain", "month": "2019-02", "revenue": 13200},
+  {"country": "France", "month": "2019-01", "revenue": 14200},
+  {"country": "France", "month": "2019-02", "revenue": 15100},
+  {"country": "Germany", "month": "2019-01", "revenue": 13850}
+]

@@ -1,0 +1,10 @@
+{
+  "model_version": "0.1.0",
+  "model_version_note": "Average revenue per country using sample invoices",
+  "country_stats": {
+    "Spain": {"average_revenue": 12850.0, "observations": 2},
+    "France": {"average_revenue": 14650.0, "observations": 2},
+    "Germany": {"average_revenue": 13850.0, "observations": 1}
+  },
+  "all_countries": {"average_revenue": 13770.0, "observations": 5}
+}
