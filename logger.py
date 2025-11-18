@@ -10,16 +10,18 @@ LOG_DIR = Path(__file__).parent / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 
 
+# This class handles logging predictions to a CSV file.
 class PredictionLogger:
-    """Appends prediction details to a CSV file."""
-
+    # Initializes the logger with a directory for log files.
     def __init__(self, log_dir: Path = LOG_DIR):
         self.log_dir = log_dir
 
+    # Determines the file path for today's log file.
     def _filepath(self) -> Path:
         today = datetime.utcnow().strftime("%Y-%m-%d")
         return self.log_dir / f"prediction-log-{today}.csv"
 
+    # Logs prediction details to the CSV file.
     def log(self, *, country: str, runtime_ms: float, prediction: Dict[str, float], request_id: Optional[str] = None) -> Path:
         request_identifier = request_id or str(uuid.uuid4())
         path = self._filepath()

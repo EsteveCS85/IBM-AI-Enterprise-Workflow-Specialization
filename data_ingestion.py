@@ -6,21 +6,14 @@ from typing import Dict, Iterable, List
 
 SAMPLE_DATA_PATH = Path(__file__).parent / "sample_data" / "invoices_sample.json"
 
-
+# This loads invoices from a small JSON file.
+# It's like a helper to make testing the API easier without manual copy-paste.
 def load_invoices(data_path: Path = SAMPLE_DATA_PATH) -> List[Dict[str, object]]:
-    """Load invoices from a tiny JSON file.
-
-    The helper mirrors the idea of automating ingestion so the API can be tested
-    repeatably without manual copy/paste steps.
-    """
-
     with data_path.open("r", encoding="utf-8") as handler:
         return json.load(handler)
 
-
+# This makes a simple summary of average revenue by country.
 def summarize_by_country(records: Iterable[Dict[str, object]]) -> Dict[str, Dict[str, float]]:
-    """Generate average revenue per country in a very small way."""
-
     totals: Dict[str, float] = {}
     counts: Dict[str, int] = {}
     for row in records:

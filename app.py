@@ -8,42 +8,47 @@ from flask import Flask, jsonify, request
 from logger import PredictionLogger
 from model import RevenueModel
 
+# Crear la app Flask
 app = Flask(__name__)
 model = RevenueModel()
-prediction_logger = PredictionLogger()
+logger = PredictionLogger()
 
 
-# Mensaje de bienvenida para la ruta principal
+# Ruta principal
 @app.get("/")
-def root() -> Dict[str, str]:
-    return {"message": "Capstone revenue API. Use POST /predict."}
+def home() -> Dict[str, str]:
+    return {"message": "Bienvenido a la API. Usa POST /predict para predicciones."}
 
 
-# Endpoint para hacer predicciones
+# Ruta para predicciones
 @app.post("/predict")
-def predict() -> Any:
-    payload = request.get_json(silent=True) or {}
-    country = payload.get("country")
+def hacer_prediccion() -> Any:
+    datos = request.get_json(silent=True) or {}
+    pais = datos.get("country")
 
-    start = time.perf_counter()
-    prediction = model.predict(country=country)
-    runtime_ms = (time.perf_counter() - start) * 1000
+    inicio = time.perf_counter()
+    resultado = model.predict(country=pais)
+    tiempo = (time.perf_counter() - inicio) * 1000
 
-    # Guardar el log de la predicción
-    prediction_logger.log(country=prediction["country"], runtime_ms=runtime_ms, prediction=prediction)
+    # Guardar log
+    logger.log(country=str(resultado.get("country", "Unknown")), runtime_ms=tiempo, prediction=resultado)
 
     return (
         jsonify(
             {
-                "input_country": country or "ALL",
-                "prediction": prediction,
-                "runtime_ms": round(runtime_ms, 2),
+                "prediction": {
+                    "country": pais or "ALL",
+                    "average_revenue": resultado.get("average_revenue", 0.0),
+                    "observations": resultado.get("observations", 0),
+                    "model_version": resultado.get("model_version", "unknown"),
+                },
+                "runtime_ms": round(tiempo, 2),
             }
         ),
         200,
     )
 
 
-# Ejecutar la aplicación en modo debug
+# Iniciar servidor
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
